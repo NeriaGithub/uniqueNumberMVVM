@@ -1,0 +1,6 @@
+framework module Pods_uniqueNumberMVVM {
+  umbrella header "Pods-uniqueNumberMVVM-umbrella.h"
+
+  export *
+  module * { export * }
+}
