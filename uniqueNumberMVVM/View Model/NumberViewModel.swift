@@ -9,13 +9,14 @@ import Foundation
 
 class NumberListViewModel {
     var numberModel:NumberModel?
-    
+    private (set) var uniqueNumbers:[Int] = []
     func fetchNumber(completion:@escaping ()->()) {
         WebService.getRequest {[weak self] (result:Result<NumberModel,WebServiceError>) in
             guard let strongSelf = self else { return}
             switch result {
             case .success(let data):
                 strongSelf.numberModel = data
+                strongSelf.createUniqueNumbers()
                 completion()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -32,20 +33,18 @@ class NumberListViewModel {
         return NumberViewModel(withNumber: number)
     }
     
-    var uniqueNumbers: [Int] {
-        var intArray:[Int] = []
-        guard let modelArray = numberModel?.numbers else { return intArray }
+    func createUniqueNumbers() {
+        guard let modelArray = numberModel?.numbers else { return}
         let sum = 0
         var dictionary:[Int:Int] = [:]
         for item in modelArray {
             let difference = sum - item.number
             if let _ = dictionary[difference] {
-                intArray.append(difference)
-                intArray.append(item.number)
+                uniqueNumbers.append(difference)
+                uniqueNumbers.append(item.number)
             }
             dictionary[item.number] = item.number
         }
-        return intArray
     }
 }
 

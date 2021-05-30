@@ -1,5 +1,5 @@
 //
-//  RedCell.swift
+//  OrangeCell.swift
 //  uniqueNumberMVVM
 //
 //  Created by Neria Jerafi on 23/02/2021.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class RedCell: UICollectionViewCell {
+class NumberCell: UICollectionViewCell {
     @IBOutlet weak var numberLabel: UILabel!
-    
+    @IBOutlet weak var bgView: UIView!
     var numberVM:NumberViewModel?{
         didSet{
             if let VM = numberVM{
@@ -17,10 +17,8 @@ class RedCell: UICollectionViewCell {
             }
         }
     }
-    
-    static let cellIdentifier = "RedCell"
+    static let cellIdentifier = "NumberCell"
      static func nib() -> UINib {
         return UINib(nibName: cellIdentifier, bundle: nil)
     }
-
 }

@@ -17,10 +17,8 @@
 		D6D4D17325E4C46C00FB716A /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D17225E4C46C00FB716A /* WebService.swift */; };
 		D6D4D17D25E4C95300FB716A /* NumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D17C25E4C95300FB716A /* NumberModel.swift */; };
 		D6D4D18025E4CA9A00FB716A /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D17F25E4CA9A00FB716A /* NumberViewModel.swift */; };
-		D6D4D18525E4E4EF00FB716A /* OrangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D18325E4E4EF00FB716A /* OrangeCell.swift */; };
-		D6D4D18625E4E4EF00FB716A /* OrangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D4D18425E4E4EF00FB716A /* OrangeCell.xib */; };
-		D6D4D19125E4EA5F00FB716A /* RedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D18F25E4EA5F00FB716A /* RedCell.swift */; };
-		D6D4D19225E4EA5F00FB716A /* RedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D4D19025E4EA5F00FB716A /* RedCell.xib */; };
+		D6D4D18525E4E4EF00FB716A /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D18325E4E4EF00FB716A /* NumberCell.swift */; };
+		D6D4D18625E4E4EF00FB716A /* NumberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D4D18425E4E4EF00FB716A /* NumberCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +34,8 @@
 		D6D4D17225E4C46C00FB716A /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		D6D4D17C25E4C95300FB716A /* NumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberModel.swift; sourceTree = "<group>"; };
 		D6D4D17F25E4CA9A00FB716A /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
-		D6D4D18325E4E4EF00FB716A /* OrangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeCell.swift; sourceTree = "<group>"; };
-		D6D4D18425E4E4EF00FB716A /* OrangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrangeCell.xib; sourceTree = "<group>"; };
-		D6D4D18F25E4EA5F00FB716A /* RedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedCell.swift; sourceTree = "<group>"; };
-		D6D4D19025E4EA5F00FB716A /* RedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedCell.xib; sourceTree = "<group>"; };
+		D6D4D18325E4E4EF00FB716A /* NumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
+		D6D4D18425E4E4EF00FB716A /* NumberCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumberCell.xib; sourceTree = "<group>"; };
 		E16D4AA974890C9476A26A06 /* Pods-uniqueNumberMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uniqueNumberMVVM.release.xcconfig"; path = "Target Support Files/Pods-uniqueNumberMVVM/Pods-uniqueNumberMVVM.release.xcconfig"; sourceTree = "<group>"; };
 		FA9EF59A77F83AFE3FB7B9C5 /* Pods_uniqueNumberMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uniqueNumberMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,10 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				D6D4D15D25E4C2CE00FB716A /* Main.storyboard */,
-				D6D4D18325E4E4EF00FB716A /* OrangeCell.swift */,
-				D6D4D18425E4E4EF00FB716A /* OrangeCell.xib */,
-				D6D4D18F25E4EA5F00FB716A /* RedCell.swift */,
-				D6D4D19025E4EA5F00FB716A /* RedCell.xib */,
+				D6D4D18325E4E4EF00FB716A /* NumberCell.swift */,
+				D6D4D18425E4E4EF00FB716A /* NumberCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,8 +208,7 @@
 				D6D4D16425E4C2CF00FB716A /* LaunchScreen.storyboard in Resources */,
 				D6D4D16125E4C2CF00FB716A /* Assets.xcassets in Resources */,
 				D6D4D15F25E4C2CE00FB716A /* Main.storyboard in Resources */,
-				D6D4D18625E4E4EF00FB716A /* OrangeCell.xib in Resources */,
-				D6D4D19225E4EA5F00FB716A /* RedCell.xib in Resources */,
+				D6D4D18625E4E4EF00FB716A /* NumberCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,9 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6D4D15C25E4C2CE00FB716A /* ViewController.swift in Sources */,
-				D6D4D18525E4E4EF00FB716A /* OrangeCell.swift in Sources */,
+				D6D4D18525E4E4EF00FB716A /* NumberCell.swift in Sources */,
 				D6D4D15825E4C2CE00FB716A /* AppDelegate.swift in Sources */,
-				D6D4D19125E4EA5F00FB716A /* RedCell.swift in Sources */,
 				D6D4D17D25E4C95300FB716A /* NumberModel.swift in Sources */,
 				D6D4D18025E4CA9A00FB716A /* NumberViewModel.swift in Sources */,
 				D6D4D17325E4C46C00FB716A /* WebService.swift in Sources */,

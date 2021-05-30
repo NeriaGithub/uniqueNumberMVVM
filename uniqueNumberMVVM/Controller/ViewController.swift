@@ -11,7 +11,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var numberCollectionView: UICollectionView!{
         didSet{
-            collectionViewConfigure()
+            // MARK: -  collectionViewConfigure
+            
+            //MARK: - Orange cell configure
+            numberCollectionView.register(NumberCell.nib(), forCellWithReuseIdentifier: NumberCell.cellIdentifier)
+            // MARK:- CollectionView Configure
+            let margin:CGFloat = 20
+            numberCollectionView.delegate = self
+            numberCollectionView.dataSource = self
+            guard let flowLayout = numberCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return  }
+            flowLayout.minimumInteritemSpacing = margin
+            flowLayout.minimumLineSpacing = margin
+            flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
         }
     }
     var numberListVM:NumberListViewModel!{
@@ -27,41 +38,27 @@ class ViewController: UIViewController {
         numberListVM = NumberListViewModel()
     }
     
-   private func collectionViewConfigure() {
-    //MARK: - Orange cell configure
-    numberCollectionView.register(OrangeCell.nib(), forCellWithReuseIdentifier: OrangeCell.cellIdentifier)
-    //MARK: - Red cell configure
-    numberCollectionView.register(RedCell.nib(), forCellWithReuseIdentifier: RedCell.cellIdentifier)
-    // MARK:- CollectionView Configure
-    let margin:CGFloat = 20
-    numberCollectionView.delegate = self
-    numberCollectionView.dataSource = self
-    guard let flowLayout = numberCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return  }
-    flowLayout.minimumInteritemSpacing = margin
-    flowLayout.minimumLineSpacing = margin
-    flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-    }
+    
 }
-
+// MARK:- Collection View Data Source methods
 extension ViewController:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberListVM.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberCell.cellIdentifier, for: indexPath) as! NumberCell
+        cell.numberVM = numberListVM.numberViewModel(atIndex: indexPath.row)
         let number = numberListVM.numberModel?.numbers[indexPath.row].number ?? 0
         if numberListVM.uniqueNumbers.contains(number) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OrangeCell.cellIdentifier, for: indexPath) as! OrangeCell
-            cell.numberVM = numberListVM.numberViewModel(atIndex: indexPath.row)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RedCell.cellIdentifier, for: indexPath) as! RedCell
-            cell.numberVM = numberListVM.numberViewModel(atIndex: indexPath.row)
-            return cell
+            cell.bgView.backgroundColor = .systemOrange
+        }else{
+            cell.bgView.backgroundColor = .systemRed
         }
+        return cell
     }
 }
-
+// MARK:- Collection View Delegate method
 extension ViewController:UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let noOfCellInRaw:CGFloat = 3// number of column you want
@@ -77,4 +74,5 @@ extension ViewController:UICollectionViewDelegateFlowLayout{
         }
     }
 }
+
 
