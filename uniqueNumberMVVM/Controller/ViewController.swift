@@ -6,13 +6,31 @@
 //
 
 import UIKit
+// MARK:- TestingManager class for Dependency Injection example
+final class TestingManager {
+    private init() {}
+    static let shared = TestingManager()
+    //  Dependency Injection example  will present when  status of testMode variable change   to true 
+    private let testMode: Bool = false
+    private let numbers: [Number] = [Number(number: 3),
+                             Number(number: 5),
+                             Number(number: 2),
+                             Number(number: -5),
+                             Number(number: -2),
+                             Number(number: 1)]
+    
+    func getNumbers() -> [Number]? {
+        if testMode {
+            return numbers
+        }
+        return nil
+    }
+}
 
 class ViewController: UIViewController {
-    
+    // MARK: - Properties
     @IBOutlet weak var numberCollectionView: UICollectionView!{
         didSet{
-            // MARK: -  collectionViewConfigure
-            
             //MARK: - Orange cell configure
             numberCollectionView.register(NumberCell.nib(), forCellWithReuseIdentifier: NumberCell.cellIdentifier)
             // MARK:- CollectionView Configure
@@ -25,20 +43,26 @@ class ViewController: UIViewController {
             flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
         }
     }
-    var numberListVM:NumberListViewModel!{
-        didSet{
-            numberListVM.fetchNumber { [weak self] in
-                guard let strongSelf = self else { return}
-                strongSelf.numberCollectionView.reloadData()
-            }
-        }
-    }
+   private var numberListVM:NumberListViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        numberListVM = NumberListViewModel()
+        // MARK:-example of Dependency Injection
+        if let numbers = TestingManager.shared.getNumbers() {
+            numberListVM = NumberListViewModel(numbers)
+        }
+        else {
+            numberListVM = NumberListViewModel()
+            numberListVM.fetchNumber()
+        }
+        bindViews()
     }
     
-    
+    private func bindViews() {
+        numberListVM.isNumbersReceived.bind { [weak self] _ in
+            self?.numberCollectionView.reloadData()
+        }
+    }
 }
 // MARK:- Collection View Data Source methods
 extension ViewController:UICollectionViewDataSource{
@@ -49,8 +73,7 @@ extension ViewController:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberCell.cellIdentifier, for: indexPath) as! NumberCell
         cell.numberVM = numberListVM.numberViewModel(atIndex: indexPath.row)
-        let number = numberListVM.numberModel?.numbers[indexPath.row].number ?? 0
-        if numberListVM.uniqueNumbers.contains(number) {
+        if numberListVM.isNumberContains(index: indexPath.row) {
             cell.bgView.backgroundColor = .systemOrange
         }else{
             cell.bgView.backgroundColor = .systemRed
@@ -65,12 +88,12 @@ extension ViewController:UICollectionViewDelegateFlowLayout{
         guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else{return CGSize(width: 0, height: 0)}
         let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right + (flowLayout.minimumInteritemSpacing * (noOfCellInRaw - 1))
         let width = Int((collectionView.bounds.width - totalSpace) / noOfCellInRaw)
-        let number = numberListVM.numberModel?.numbers[indexPath.row].number ?? 0
+        let number = numberListVM.numberModel?.numbers?[indexPath.row].number ?? 0
         
         if numberListVM.uniqueNumbers.contains(number){
-            return CGSize(width: width, height: 100)
+            return CGSize(width: width, height: Constants.bigCellHeight)
         }else{
-            return CGSize(width: width, height: 50)
+            return CGSize(width: width, height: Constants.smallCellHeight)
         }
     }
 }

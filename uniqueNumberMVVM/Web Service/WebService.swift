@@ -13,7 +13,7 @@ enum WebServiceError:Error {
 }
 
 struct WebService {
-    static func getRequest<T:Decodable>(stringURL:String = "https://pastebin.com/raw/8wJzytQX",completion:@escaping(Result<T,WebServiceError>) ->()){
+    static func getRequest<T:Decodable>(stringURL:String ,completion:@escaping(Result<T,WebServiceError>) ->()){
         guard let url = URL(string: stringURL) else { return }
         AF.request(url).response { (response) in
             if let data = response.data{

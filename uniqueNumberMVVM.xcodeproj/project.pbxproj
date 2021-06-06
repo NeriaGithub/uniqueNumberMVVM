@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F7DE1785C2F20FE1DDCD196 /* Pods_uniqueNumberMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9EF59A77F83AFE3FB7B9C5 /* Pods_uniqueNumberMVVM.framework */; };
+		D61BF3AF266D4BEB003313EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61BF3AE266D4BEB003313EF /* Constants.swift */; };
+		D61BF3B3266D5A0E003313EF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61BF3B2266D5A0E003313EF /* Observable.swift */; };
 		D6D4D15825E4C2CE00FB716A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D15725E4C2CE00FB716A /* AppDelegate.swift */; };
 		D6D4D15A25E4C2CE00FB716A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D15925E4C2CE00FB716A /* SceneDelegate.swift */; };
 		D6D4D15C25E4C2CE00FB716A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D4D15B25E4C2CE00FB716A /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		913F057719CCE4022818BDAB /* Pods-uniqueNumberMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uniqueNumberMVVM.debug.xcconfig"; path = "Target Support Files/Pods-uniqueNumberMVVM/Pods-uniqueNumberMVVM.debug.xcconfig"; sourceTree = "<group>"; };
+		D61BF3AE266D4BEB003313EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D61BF3B2266D5A0E003313EF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D6D4D15425E4C2CE00FB716A /* uniqueNumberMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uniqueNumberMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D4D15725E4C2CE00FB716A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6D4D15925E4C2CE00FB716A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D61BF3B6266D752F003313EF /* Binding */ = {
+			isa = PBXGroup;
+			children = (
+				D61BF3B2266D5A0E003313EF /* Observable.swift */,
+			);
+			path = Binding;
+			sourceTree = "<group>";
+		};
 		D6D4D14B25E4C2CE00FB716A = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +102,8 @@
 		D6D4D15625E4C2CE00FB716A /* uniqueNumberMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				D61BF3B6266D752F003313EF /* Binding */,
+				D61BF3AE266D4BEB003313EF /* Constants.swift */,
 				D6D4D17125E4C33D00FB716A /* Controller */,
 				D6D4D17025E4C30500FB716A /* Web Service */,
 				D6D4D16F25E4C30000FB716A /* Model */,
@@ -265,9 +279,11 @@
 				D6D4D18525E4E4EF00FB716A /* NumberCell.swift in Sources */,
 				D6D4D15825E4C2CE00FB716A /* AppDelegate.swift in Sources */,
 				D6D4D17D25E4C95300FB716A /* NumberModel.swift in Sources */,
+				D61BF3B3266D5A0E003313EF /* Observable.swift in Sources */,
 				D6D4D18025E4CA9A00FB716A /* NumberViewModel.swift in Sources */,
 				D6D4D17325E4C46C00FB716A /* WebService.swift in Sources */,
 				D6D4D15A25E4C2CE00FB716A /* SceneDelegate.swift in Sources */,
+				D61BF3AF266D4BEB003313EF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

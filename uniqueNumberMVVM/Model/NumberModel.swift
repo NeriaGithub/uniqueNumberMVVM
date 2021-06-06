@@ -8,10 +8,10 @@
 import Foundation
 
 struct NumberModel: Decodable {
-    let numbers: [Number]
+    let numbers: [Number]?
 }
 
 
 struct Number: Decodable {
-    let number: Int
+    let number: Int?
 }
